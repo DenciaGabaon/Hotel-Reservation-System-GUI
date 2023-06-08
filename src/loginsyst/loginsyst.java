@@ -187,6 +187,7 @@ public class loginsyst {
 				panel_1.add(lblauthentication);
 				
 				JButton btnlogin = new JButton("LOG IN");
+				btnlogin.setForeground(Color.WHITE);
 				btnlogin.setBorderPainted(false);
 				btnlogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				btnlogin.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -224,6 +225,7 @@ public class loginsyst {
 					            //	System.out.print(PW);
 					            	
 					        	 if (txtUsername.getText().equals(UN) && txtPassword.getText().equals(PW)) {
+					        		 Framenu.main(null);
 					             	//new window
 					        	    //Make another Java program that contains the Menu or the Main page of HRM System.        	   
 					             } 
@@ -233,7 +235,7 @@ public class loginsyst {
 					        	 else {
 					        		lblauthentication.setText("Invalid Credentials!");
 						       		 main(null);
-					        	 }
+					        	  }
 					        	 } catch (Exception ignored) {}
 					        }
 					        reader.close();
@@ -242,7 +244,7 @@ public class loginsyst {
 					        }
 					}
 				});
-				btnlogin.setBackground(new Color(204, 153, 0));
+				btnlogin.setBackground(new Color(51, 0, 0));
 				btnlogin.setFont(new Font("Tahoma", Font.BOLD, 13));
 				btnlogin.setBounds(23, 233, 251, 37);
 				panel_1.add(btnlogin);

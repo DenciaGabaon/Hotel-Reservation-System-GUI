@@ -23,8 +23,15 @@ import javax.swing.UIManager;
 public class Framenu extends JFrame {
 
 	private JPanel contentPane;
+	
 	private final JPanel panel = new JPanel();
 	private Image img_logo = new ImageIcon(loginsyst.class.getResource("/res/PicadiliLogo.png")).getImage().getScaledInstance(250, 220, Image.SCALE_SMOOTH);
+	
+	private PanelMakeReservation panelMakeReservation;
+	private PanelHotelInformation panelHotelInformation;
+	private PanelAvailability panelAvailability;
+	private PanelReservationList panelReservationList;
+	private PanelLogOut panelLogOut;
 	
 	/**
 	 * Launch the application.
@@ -59,6 +66,12 @@ public class Framenu extends JFrame {
 		panel.setBounds(0, 0, 238, 500);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		panelMakeReservation = new PanelMakeReservation();
+		panelHotelInformation = new PanelHotelInformation();
+		panelAvailability = new PanelAvailability();
+		panelReservationList = new PanelReservationList();
+		panelLogOut = new PanelLogOut();
 		
 		JPanel panelinfo = new JPanel();
 		panelinfo.addMouseListener(new PanelButtonMouseAdapter(panelinfo));
@@ -136,7 +149,7 @@ public class Framenu extends JFrame {
 		lblinfo_1_2.setBounds(26, 11, 182, 14);
 		paneldisplay.add(lblinfo_1_2);
 		
-		JLabel lblClose = new JLabel("X");
+		final JLabel lblClose = new JLabel("X");
 		lblClose.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClose.addMouseListener(new MouseAdapter() {
 			@Override
@@ -157,7 +170,32 @@ public class Framenu extends JFrame {
 		lblClose.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		lblClose.setBounds(770, 11, 20, 20);
 		getContentPane().add(lblClose);
+		
+		JPanel panelMainContent = new JPanel();
+		//panelMainContent.setBackground(new Color(240, 230, 140));
+		panelMainContent.setBounds(248, 28, 530, 450);
+		contentPane.add(panelMainContent);
+		
+		panelMainContent.add(panelMakeReservation);
+		panelMainContent.add(panelHotelInformation);
+		panelMainContent.add(panelAvailability);
+		panelMainContent.add(panelReservationList);
+		panelMainContent.add(panelLogOut);
+		
+		menuClicked(panelHotelInformation);
 	}
+	
+	public void menuClicked(JPanel panel) {
+		
+		panelMakeReservation.setVisible(false);
+		panelHotelInformation.setVisible(false);
+		panelAvailability.setVisible(false);
+		panelReservationList.setVisible(false);
+		panelLogOut.setVisible(false);
+		
+		
+	}
+	
 	private class PanelButtonMouseAdapter extends MouseAdapter {
 		
 		JPanel panel;

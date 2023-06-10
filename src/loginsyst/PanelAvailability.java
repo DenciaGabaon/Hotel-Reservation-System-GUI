@@ -10,7 +10,7 @@ public class PanelAvailability extends JPanel {
 
 
 	public PanelAvailability() {
-		//setBackground(new Color(240, 230, 140));
+		
 		
 		setBounds(0, 0, 530, 450);
 		setLayout(null);

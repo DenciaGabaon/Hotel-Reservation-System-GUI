@@ -181,7 +181,30 @@ public class Framenu extends JFrame {
 		lblinfo_1_2.setBounds(26, 11, 182, 14);
 		paneldisplay.add(lblinfo_1_2);
 		
+		JPanel panelMainContent = new JPanel();
+		panelMainContent.setBackground(new Color(230, 230, 250));
+		//panelMainContent.setBackground(new Color(240, 230, 140));
+		panelMainContent.setBounds(248, 28, 526, 446);
+		contentPane.add(panelMainContent);
+		
+		panelMainContent.add(panelMakeReservation);
+		panelMainContent.add(panelHotelInformation);
+		panelMainContent.add(panelAvailability);
+		panelMainContent.add(panelReservationList);
+		panelMainContent.add(panelLogOut);
+		panelMainContent.setLayout(null);
+		
+		menuClicked(panelHotelInformation);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(218, 165, 32));
+		panel_1.setBounds(238, 0, 562, 24);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
+		
 		final JLabel lblClose = new JLabel("X");
+		lblClose.setBounds(536, 2, 16, 21);
+		panel_1.add(lblClose);
 		lblClose.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClose.addMouseListener(new MouseAdapter() {
 			@Override
@@ -200,23 +223,6 @@ public class Framenu extends JFrame {
 		lblClose.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblClose.setForeground(new Color(240, 248, 255));
 		lblClose.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-		lblClose.setBounds(770, 11, 20, 20);
-		getContentPane().add(lblClose);
-		
-		JPanel panelMainContent = new JPanel();
-		panelMainContent.setBackground(new Color(230, 230, 250));
-		//panelMainContent.setBackground(new Color(240, 230, 140));
-		panelMainContent.setBounds(248, 28, 526, 446);
-		contentPane.add(panelMainContent);
-		
-		panelMainContent.add(panelMakeReservation);
-		panelMainContent.add(panelHotelInformation);
-		panelMainContent.add(panelAvailability);
-		panelMainContent.add(panelReservationList);
-		panelMainContent.add(panelLogOut);
-		panelMainContent.setLayout(null);
-		
-		menuClicked(panelHotelInformation);
 	}
 	
 	public void menuClicked(JPanel panel) {

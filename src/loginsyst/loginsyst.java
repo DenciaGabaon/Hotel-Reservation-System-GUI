@@ -53,9 +53,7 @@ public class loginsyst {
 	private JLabel lblauthentication = new JLabel("");
 	
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -69,9 +67,7 @@ public class loginsyst {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+	
 	public loginsyst() {
 		initialize();
 	}
@@ -250,7 +246,7 @@ public class loginsyst {
 				panel_1.add(btnlogin);
 				txtUsername.setVisible(true);
 				
-				JLabel lblClose = new JLabel("X");
+				final JLabel lblClose = new JLabel("X");
 				lblClose.setHorizontalAlignment(SwingConstants.CENTER);
 				lblClose.addMouseListener(new MouseAdapter() {
 					@Override
@@ -277,5 +273,11 @@ public class loginsyst {
 				lblPicadiliLogo.setBounds(27, 43, 278, 309);
 				lblPicadiliLogo.setIcon(new ImageIcon (img_logo));
 				frame.getContentPane().add(lblPicadiliLogo);
+	}
+
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 }

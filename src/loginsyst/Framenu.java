@@ -17,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
@@ -73,8 +74,14 @@ public class Framenu extends JFrame {
 		panelReservationList = new PanelReservationList();
 		panelLogOut = new PanelLogOut();
 		
-		JPanel panelinfo = new JPanel();
-		panelinfo.addMouseListener(new PanelButtonMouseAdapter(panelinfo));
+		final JPanel panelinfo = new JPanel();
+		panelinfo.addMouseListener(new PanelButtonMouseAdapter(panelinfo) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(panelHotelInformation);
+			}
+		});
+		
 		panelinfo.setBackground(new Color(51, 0, 0));
 		panelinfo.setBounds(0, 221, 238, 35);
 		panel.add(panelinfo);
@@ -87,8 +94,13 @@ public class Framenu extends JFrame {
 		lblinfo.setBounds(25, 11, 182, 14);
 		panelinfo.add(lblinfo);
 		
-		JPanel panelavail = new JPanel();
-		panelavail.addMouseListener(new PanelButtonMouseAdapter(panelavail));
+		final JPanel panelavail = new JPanel();
+		panelavail.addMouseListener(new PanelButtonMouseAdapter(panelavail) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(panelAvailability);
+			}
+		});
 		panelavail.setBackground(new Color(51, 0, 0));
 		panelavail.setBounds(0, 257, 238, 35);
 		panel.add(panelavail);
@@ -101,8 +113,13 @@ public class Framenu extends JFrame {
 		lblAvailability.setBounds(25, 11, 182, 14);
 		panelavail.add(lblAvailability);
 		
-		JPanel panelmakeres = new JPanel();
-		panelmakeres.addMouseListener(new PanelButtonMouseAdapter(panelmakeres));
+		final JPanel panelmakeres = new JPanel();
+		panelmakeres.addMouseListener(new PanelButtonMouseAdapter(panelmakeres) {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					menuClicked(panelMakeReservation);
+				}
+	     });
 		panelmakeres.setBackground(new Color(51, 0, 0));
 		panelmakeres.setBounds(0, 293, 238, 35);
 		panel.add(panelmakeres);
@@ -115,8 +132,18 @@ public class Framenu extends JFrame {
 		lblinfo_1_1.setBounds(25, 11, 182, 14);
 		panelmakeres.add(lblinfo_1_1);
 		
-		JPanel panellogout = new JPanel();
-		panellogout.addMouseListener(new PanelButtonMouseAdapter(panellogout));
+		final JPanel panellogout = new JPanel();
+		panellogout.addMouseListener(new PanelButtonMouseAdapter(panellogout) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if(JOptionPane.showConfirmDialog(null, "Are you sure you want to log out?")==0) {
+					loginsyst loginSyst = new loginsyst();
+					loginSyst.setVisible(true);
+					Framenu.this.dispose();
+				}
+			}
+		});
 		panellogout.setBackground(new Color(51, 0, 0));
 		panellogout.setBounds(0, 365, 238, 35);
 		panel.add(panellogout);
@@ -135,8 +162,13 @@ public class Framenu extends JFrame {
 		lbllogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbllogo.setIcon(new ImageIcon (img_logo));
 		
-		JPanel paneldisplay = new JPanel();
-		paneldisplay.addMouseListener(new PanelButtonMouseAdapter(paneldisplay));
+		final JPanel paneldisplay = new JPanel();
+		paneldisplay.addMouseListener(new PanelButtonMouseAdapter(paneldisplay) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(panelReservationList);
+			}
+		});
 		paneldisplay.setBackground(new Color(51, 0, 0));
 		paneldisplay.setBounds(0, 329, 238, 35);
 		panel.add(paneldisplay);
@@ -172,8 +204,9 @@ public class Framenu extends JFrame {
 		getContentPane().add(lblClose);
 		
 		JPanel panelMainContent = new JPanel();
+		panelMainContent.setBackground(new Color(230, 230, 250));
 		//panelMainContent.setBackground(new Color(240, 230, 140));
-		panelMainContent.setBounds(248, 28, 530, 450);
+		panelMainContent.setBounds(248, 28, 526, 446);
 		contentPane.add(panelMainContent);
 		
 		panelMainContent.add(panelMakeReservation);
@@ -181,6 +214,7 @@ public class Framenu extends JFrame {
 		panelMainContent.add(panelAvailability);
 		panelMainContent.add(panelReservationList);
 		panelMainContent.add(panelLogOut);
+		panelMainContent.setLayout(null);
 		
 		menuClicked(panelHotelInformation);
 	}
@@ -193,7 +227,7 @@ public class Framenu extends JFrame {
 		panelReservationList.setVisible(false);
 		panelLogOut.setVisible(false);
 		
-		
+		panel.setVisible(true);
 	}
 	
 	private class PanelButtonMouseAdapter extends MouseAdapter {

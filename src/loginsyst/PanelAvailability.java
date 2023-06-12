@@ -38,8 +38,8 @@ public class PanelAvailability extends JPanel implements ActionListener{
 		date.setPreferredSize(new Dimension(40, 40));
  
 		avail.add(button);
-		avail.add(avail);
 		avail.add(date);
+		this.add(avail);
 	}
 
 	@Override

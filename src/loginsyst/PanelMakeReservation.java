@@ -3,8 +3,15 @@ package loginsyst;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 
 import javax.swing.JFormattedTextField;
@@ -15,10 +22,18 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 public class PanelMakeReservation extends JPanel {
+	
 	private JTextField NameTextField;
 	private JTextField DateTextField;
-
+	protected int flags;
+	
 
 	public PanelMakeReservation() {
 		setBackground(new Color(255, 215, 0));
@@ -36,10 +51,7 @@ public class PanelMakeReservation extends JPanel {
 		panel.add(lblThisIsMakeRes);
 		lblThisIsMakeRes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblThisIsMakeRes.setFont(new Font("Dialog", Font.BOLD, 14));
-		
-		
-		
-		
+			
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 425, 530, 19);
@@ -64,28 +76,20 @@ public class PanelMakeReservation extends JPanel {
 		lblRoomType.setBounds(154, 245, 95, 19);
 		add(lblRoomType);
 		
-		JComboBox<Object> RoomType = new JComboBox<Object>();
+		final JComboBox<Object> RoomType = new JComboBox<Object>();
 		RoomType.setFont(new Font("Dialog", Font.PLAIN, 12));
-		RoomType.setModel(new DefaultComboBoxModel(new String[] {"-SELECT-", "STANDARD", "DELUXE", "SUITE"}));
+		RoomType.setModel(new DefaultComboBoxModel<Object>(new String[] {"-SELECT-", "STANDARD", "DELUXE", "SUITE"}));
 		RoomType.setBackground(new Color(255, 255, 255));
 		RoomType.setBounds(154, 267, 232, 39);
 		add(RoomType);
 		
-		JButton btnAdd = new JButton("ADD");
-		btnAdd.setBackground(new Color(51, 0, 0));
-		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnAdd.setBounds(154, 347, 232, 34);
-		btnAdd.setForeground(Color.WHITE);
-		btnAdd.setBorderPainted(false);
-		btnAdd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAdd.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		add(btnAdd);
 		
 		NameTextField = new JTextField();
 		NameTextField.setFont(new Font("Dialog", Font.PLAIN, 12));
 		NameTextField.setBounds(154, 128, 232, 38);
 		add(NameTextField);
 		NameTextField.setColumns(10);
+
 		
 		DateTextField = new JTextField();
 		DateTextField.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -93,5 +97,46 @@ public class PanelMakeReservation extends JPanel {
 		DateTextField.setBounds(154, 196, 232, 38);
 		add(DateTextField);
 
-	}
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        String name = NameTextField.getText();
+		        String date = DateTextField.getText();
+		        
+		        // Call the AddRowToJTable() method with the obtained values
+		        AddRowToJTable(name, date);
+		    }
+		});
+				
+		btnAdd.setBackground(new Color(51, 0, 0));
+		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnAdd.setBounds(154, 347, 232, 34);
+		btnAdd.setForeground(Color.WHITE);
+		btnAdd.setBorderPainted(false);
+		btnAdd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAdd.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+
+		add(btnAdd);
+		
+
+			
 }
+
+
+	protected void AddRowToJTable(String name, String date) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void pack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setLocationRelativeTo(Object object) {
+		// TODO Auto-generated method stub
+		
+	}}
+	

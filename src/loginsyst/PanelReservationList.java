@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelReservationList extends JPanel {
-	private JTable table;
+	private JTable jTable1_1;
 
 
 	public PanelReservationList() {
@@ -49,12 +49,12 @@ public class PanelReservationList extends JPanel {
 		scrollPane.setBounds(51, 101, 432, 245);
 		add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setFont(new Font("Dialog", Font.PLAIN, 12));
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		table.setBackground(new Color(230, 230, 250));
-		table.setModel(new DefaultTableModel(
+		jTable1_1 = new JTable();
+		scrollPane.setViewportView(jTable1_1);
+		jTable1_1.setFont(new Font("Dialog", Font.PLAIN, 12));
+		jTable1_1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		jTable1_1.setBackground(new Color(230, 230, 250));
+		jTable1_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
 				{null, null, null, null, null},
@@ -69,7 +69,23 @@ public class PanelReservationList extends JPanel {
 		JButton btnBackToMakeRes = new JButton("GO BACK");
 		btnBackToMakeRes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				PanelMakeReservation panelText = new PanelMakeReservation();
+				panelText.setVisible(true);
+				panelText.pack();
+				panelText.setLocationRelativeTo(null);
+				
 			}
+			
+			public void AddRowToJTable(Object[] dataRow)
+			{
+				DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
+				 model.addRow(dataRow);
+			}
+			
+			private javax.swing.JButton JButtonOpen;
+			private javax.swing.JScrollPane JScrollPane1;
+			private javax.swing.JTable jTable1_1;
 		});
 		btnBackToMakeRes.setBackground(new Color(51, 0, 0));
 		btnBackToMakeRes.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -81,5 +97,13 @@ public class PanelReservationList extends JPanel {
 		add(btnBackToMakeRes);
 		
 
+		
+
+	}
+
+
+	public static void AddRowToJTable(Object[] objects) {
+		// TODO Auto-generated method stub
+		
 	}
 }

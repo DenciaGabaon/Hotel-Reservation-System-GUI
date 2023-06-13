@@ -51,6 +51,7 @@ public class loginsyst {
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
 	private JLabel lblauthentication = new JLabel("");
+	private int counter = 0;
 	
 
 

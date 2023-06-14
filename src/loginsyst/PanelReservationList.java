@@ -62,7 +62,7 @@ public class PanelReservationList extends JPanel {
 				//{null, null, null, null, null},
 			},
 			new String[] {
-					"ROOM ID", "NAME", "ROOM TYPE", "DATE", "PRICE"  
+					 "NAME", "DATE", "ROOM TYPE", "PRICE", "ROOM ID"  
 			}
 		));
 		
@@ -95,13 +95,18 @@ public class PanelReservationList extends JPanel {
 
 	}
 	
-	public static void AddRowToJTable(String name, String date)
+	public static void AddRowToJTable(String name, String date, String roomType)
 	{
 		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
-		 model.addRow(new Object [] { name, date });
+		 model.addRow(new Object [] { name, date, roomType });
+	
 	}
 
 	public static void roomIDgenerator() {
 		//
 	}
+	
+	private javax.swing.JButton JButtonOpen;
+	private javax.swing.JScrollPane JScrollPane1;
+	
 }

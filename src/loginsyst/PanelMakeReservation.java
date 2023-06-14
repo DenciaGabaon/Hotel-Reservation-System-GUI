@@ -103,6 +103,10 @@ public class PanelMakeReservation extends JPanel {
 		        String name = NameTextField.getText();
 		        String date = DateTextField.getText();
 		        
+		      /*  FileWriter writer = new FileWriter("/res/list.txt");
+		        writer.write(name + "\n");
+		        writer.write(date + "\n");*/
+		        
 		        // Call the AddRowToJTable() method with the obtained values
 		        AddRowToJTable(name, date);
 		    }

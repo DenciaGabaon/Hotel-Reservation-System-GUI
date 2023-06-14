@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class PanelReservationList extends JPanel {
 	private static JTable jTable1_1;
-
+    static int n = 0;
 
 	public PanelReservationList() {
 		setBackground(new Color(255, 215, 0));
@@ -62,7 +62,7 @@ public class PanelReservationList extends JPanel {
 				//{null, null, null, null, null},
 			},
 			new String[] {
-					 "NAME", "DATE", "ROOM TYPE", "PRICE", "ROOM ID"  
+					"ROOM ID", "NAME", "DATE", "ROOM TYPE", "PRICE",   
 			}
 		));
 		
@@ -95,15 +95,16 @@ public class PanelReservationList extends JPanel {
 
 	}
 	
+
 	public static void AddRowToJTable(String name, String date, String roomType)
 	{
+		int roomid = roomIDgenerator();
 		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
-		 model.addRow(new Object [] { name, date, roomType });
-	
+		 model.addRow(new Object [] {roomid, name, date, roomType });
 	}
 
-	public static void roomIDgenerator() {
-		//
+	public static int roomIDgenerator() {
+		return ++n;
 	}
 	
 	private javax.swing.JButton JButtonOpen;

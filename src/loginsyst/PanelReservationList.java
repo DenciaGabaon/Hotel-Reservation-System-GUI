@@ -20,7 +20,9 @@ import java.awt.event.ActionEvent;
 
 public class PanelReservationList extends JPanel {
 	private static JTable jTable1_1;
-    static int n = 0;
+	private static Object price;
+	   static int n = 0;
+
 
 	public PanelReservationList() {
 		setBackground(new Color(255, 215, 0));
@@ -62,7 +64,7 @@ public class PanelReservationList extends JPanel {
 				//{null, null, null, null, null},
 			},
 			new String[] {
-					"ROOM ID", "NAME", "DATE", "ROOM TYPE", "PRICE",   
+					"ROOM ID", "NAME", "DATE", "ROOM TYPE", "PRICE"
 			}
 		));
 		
@@ -95,18 +97,32 @@ public class PanelReservationList extends JPanel {
 
 	}
 	
-
 	public static void AddRowToJTable(String name, String date, String roomType)
 	{
 		int roomid = roomIDgenerator();
 		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
-		 model.addRow(new Object [] {roomid, name, date, roomType });
+	    int price = getPriceByRoomType(roomType);
+		model.addRow(new Object [] { roomid, name, date, roomType, price});
+		 
 	}
-
+	
 	public static int roomIDgenerator() {
 		return ++n;
 	}
 	
+	private static int getPriceByRoomType(String roomType) {
+	    int price = 0;
+	    if (roomType.equals("Standard")) {
+	        price = 3000;
+	    } else if (roomType.equals("Deluxe")) {
+	        price = 6000;
+	    } else if (roomType.equals("Suite")) {
+	        price = 10000;
+	    }
+	    return price;
+	}
+
+
 	private javax.swing.JButton JButtonOpen;
 	private javax.swing.JScrollPane JScrollPane1;
 	

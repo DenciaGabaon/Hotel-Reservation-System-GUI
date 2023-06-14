@@ -33,6 +33,7 @@ public class PanelMakeReservation extends JPanel {
 	private JTextField NameTextField;
 	private JTextField DateTextField;
 	protected int flags;
+	private JTextField RoomTypeTextField;
 	
 
 	public PanelMakeReservation() {
@@ -76,13 +77,6 @@ public class PanelMakeReservation extends JPanel {
 		lblRoomType.setBounds(154, 245, 95, 19);
 		add(lblRoomType);
 		
-		final JComboBox<Object> RoomType = new JComboBox<Object>();
-		RoomType.setFont(new Font("Dialog", Font.PLAIN, 12));
-		RoomType.setModel(new DefaultComboBoxModel<Object>(new String[] {"-SELECT-", "STANDARD", "DELUXE", "SUITE"}));
-		RoomType.setBackground(new Color(255, 255, 255));
-		RoomType.setBounds(154, 267, 232, 39);
-		add(RoomType);
-		
 		
 		NameTextField = new JTextField();
 		NameTextField.setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -102,10 +96,12 @@ public class PanelMakeReservation extends JPanel {
 		    public void actionPerformed(ActionEvent e) {
 		        String name = NameTextField.getText();
 		        String date = DateTextField.getText();
+		        String roomType = RoomTypeTextField.getText();
+		        
 		        
 		        // Call the AddRowToJTable() method with the obtained values
 		        //AddRowToJTable(name, date);
-		        PanelReservationList.AddRowToJTable(name, date);
+		        PanelReservationList.AddRowToJTable(name, date, roomType);
 		    
 		    }
 		});
@@ -119,6 +115,12 @@ public class PanelMakeReservation extends JPanel {
 		btnAdd.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
 		add(btnAdd);
+		
+		RoomTypeTextField = new JTextField();
+		RoomTypeTextField.setFont(new Font("Dialog", Font.PLAIN, 12));
+		RoomTypeTextField.setColumns(10);
+		RoomTypeTextField.setBounds(154, 263, 232, 38);
+		add(RoomTypeTextField);
 		
 
 			

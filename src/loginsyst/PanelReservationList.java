@@ -58,10 +58,6 @@ public class PanelReservationList extends JPanel {
 		jTable1_1.setBackground(new Color(230, 230, 250));
 		jTable1_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				//{null, null, null, null, null},
-				//{null, null, null, null, null},
-				//{null, null, null, null, null},
-				//{null, null, null, null, null},
 			},
 			new String[] {
 					"ROOM ID", "NAME", "DATE", "ROOM TYPE", "PRICE"
@@ -97,29 +93,16 @@ public class PanelReservationList extends JPanel {
 
 	}
 	
-	public static void AddRowToJTable(String name, String date, String roomType)
+	public static void AddRowToJTable(String name, String date, String roomType, int price)
 	{
 		int roomid = roomIDgenerator();
 		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
-	    int price = getPriceByRoomType(roomType);
 		model.addRow(new Object [] { roomid, name, date, roomType, price});
 		 
 	}
 	
 	public static int roomIDgenerator() {
 		return ++n;
-	}
-	
-	private static int getPriceByRoomType(String roomType) {
-	    int price = 0;
-	    if (roomType.equals("Standard")) {
-	        price = 3000;
-	    } else if (roomType.equals("Deluxe")) {
-	        price = 6000;
-	    } else if (roomType.equals("Suite")) {
-	        price = 10000;
-	    }
-	    return price;
 	}
 
 

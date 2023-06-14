@@ -34,6 +34,8 @@ public class PanelMakeReservation extends JPanel {
 	private JTextField DateTextField;
 	protected int flags;
 	private JTextField RoomTypeTextField;
+	private String roomtype;
+	private int price = 0;
 	
 
 	public PanelMakeReservation() {
@@ -96,12 +98,9 @@ public class PanelMakeReservation extends JPanel {
 		    public void actionPerformed(ActionEvent e) {
 		        String name = NameTextField.getText();
 		        String date = DateTextField.getText();
-		        String roomType = RoomTypeTextField.getText();
-		        
-		        
+		        		    
 		        // Call the AddRowToJTable() method with the obtained values
-		        //AddRowToJTable(name, date);
-		        PanelReservationList.AddRowToJTable(name, date, roomType);
+		        PanelReservationList.AddRowToJTable(name, date, roomtype, price);
 		    
 		    }
 		});
@@ -116,13 +115,30 @@ public class PanelMakeReservation extends JPanel {
 
 		add(btnAdd);
 		
-		RoomTypeTextField = new JTextField();
-		RoomTypeTextField.setFont(new Font("Dialog", Font.PLAIN, 12));
-		RoomTypeTextField.setColumns(10);
-		RoomTypeTextField.setBounds(154, 263, 232, 38);
-		add(RoomTypeTextField);
 		
-
+		final JComboBox<Object> RoomType = new JComboBox<Object>();
+		RoomType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (RoomType.getSelectedItem().equals("STANDARD")) {
+					roomtype = "Standard";
+					price = 3000;
+				}
+				else if (RoomType.getSelectedItem().equals("DELUXE")) {
+					roomtype = "Deluxe";
+					price = 6000;
+				}
+				else if (RoomType.getSelectedItem().equals("SUITE")) {
+					roomtype = "Suite";
+					price = 10000;
+				}
+			}
+		});
+		RoomType.setFont(new Font("Dialog", Font.PLAIN, 12));
+		RoomType.setModel(new DefaultComboBoxModel<Object>(new String[] {"-SELECT-", "STANDARD", "DELUXE", "SUITE"}));
+		RoomType.setBackground(new Color(255, 255, 255));
+		RoomType.setBounds(154, 267, 232, 39);
+		add(RoomType);
+		
 			
 }
 

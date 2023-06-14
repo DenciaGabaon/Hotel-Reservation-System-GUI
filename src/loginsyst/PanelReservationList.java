@@ -93,12 +93,11 @@ public class PanelReservationList extends JPanel {
 
 	}
 	
-	public static void AddRowToJTable(String name, String date, String roomType, int price)
+	public static void AddRowToJTable(String name, String date, String roomType, String price)
 	{
 		int roomid = roomIDgenerator();
 		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
 		model.addRow(new Object [] { roomid, name, date, roomType, price});
-		 
 	}
 	
 	public static int roomIDgenerator() {

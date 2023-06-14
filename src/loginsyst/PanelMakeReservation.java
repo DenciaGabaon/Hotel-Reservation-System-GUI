@@ -1,34 +1,25 @@
 package loginsyst;
 
-import javax.swing.JPanel;
-
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-
-import javax.swing.JFormattedTextField;
-import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-
-import java.util.Scanner;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 public class PanelMakeReservation extends JPanel{
 	
@@ -37,7 +28,8 @@ public class PanelMakeReservation extends JPanel{
 	protected int flags;
 	private JTextField RoomTypeTextField;
 	private String roomtype;
-	private int price = 0;
+	private Scanner x;
+	private String price = "";
 	
 
 	public PanelMakeReservation() {
@@ -100,26 +92,44 @@ public class PanelMakeReservation extends JPanel{
 		    public void actionPerformed(ActionEvent e) {
 		        String name = NameTextField.getText();
 		        String date = DateTextField.getText();
-<<<<<<< HEAD
+		        String filepath = "list.txt";
+		        String tempFile = "temp.txt";
+		        File oldFile = new File(filepath);
+		        File newFile = new File(tempFile);
+		        String tname = ""; String tdate= ""; String troomType= ""; String tprice= "";
 		        
 				try {
-					FileWriter writer = new FileWriter("/src/res/list.txt");
-		        	writer.write(name + "\n");
-		        	writer.write(date + "\n");
-		        	writer.close();
-				}	catch(IOException ie){
+					FileWriter writer = new FileWriter(tempFile,true);
+					BufferedWriter bwriter = new BufferedWriter(writer);
+					PrintWriter pwriter = new PrintWriter(bwriter);
+					x = new Scanner(new File(filepath));
+					x.useDelimiter("[,\n]");
+					while(x.hasNext()) {
+						tname = x.next();
+						tdate = x.next();
+						troomType = x.next();
+						tprice = x.next();
+						pwriter.println(tname + "," + tdate + "," + troomType + "," + tprice);
+						PanelReservationList.AddRowToJTable(tname, tdate, troomType, tprice);	
+					}
+					pwriter.println(name + "," + date + "," + roomtype + "," + price);
+					PanelReservationList.AddRowToJTable(name, date, roomtype, price);
+					x.close();
+					pwriter.flush();
+					pwriter.close();
+					oldFile.delete();
+					File dump = new File(filepath);
+					newFile.renameTo(dump);
+				}catch(IOException ie){
 					ie.printStackTrace();
 				}
 				
 		        
 		        
 		        
-=======
-		        		    
->>>>>>> d11ed60429e730f2bb36f19472e86c31fa256d41
 		        // Call the AddRowToJTable() method with the obtained values
-		        PanelReservationList.AddRowToJTable(name, date, roomtype, price);
-		    
+		        
+		        // add this in the edit file
 		    }
 		});
 				
@@ -139,15 +149,15 @@ public class PanelMakeReservation extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				if (RoomType.getSelectedItem().equals("STANDARD")) {
 					roomtype = "Standard";
-					price = 3000;
+					price = "3000";
 				}
 				else if (RoomType.getSelectedItem().equals("DELUXE")) {
 					roomtype = "Deluxe";
-					price = 6000;
+					price = "6000";
 				}
 				else if (RoomType.getSelectedItem().equals("SUITE")) {
 					roomtype = "Suite";
-					price = 10000;
+					price = "10000";
 				}
 			}
 		});

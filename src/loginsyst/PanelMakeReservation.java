@@ -104,7 +104,9 @@ public class PanelMakeReservation extends JPanel {
 		        String date = DateTextField.getText();
 		        
 		        // Call the AddRowToJTable() method with the obtained values
-		        AddRowToJTable(name, date);
+		        //AddRowToJTable(name, date);
+		        PanelReservationList.AddRowToJTable(name, date);
+		    
 		    }
 		});
 				
@@ -122,11 +124,6 @@ public class PanelMakeReservation extends JPanel {
 			
 }
 
-
-	protected void AddRowToJTable(String name, String date) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	public void pack() {

@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelReservationList extends JPanel {
-	private JTable jTable1_1;
+	private static JTable jTable1_1;
 
 
 	public PanelReservationList() {
@@ -56,13 +56,13 @@ public class PanelReservationList extends JPanel {
 		jTable1_1.setBackground(new Color(230, 230, 250));
 		jTable1_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+				//{null, null, null, null, null},
+				//{null, null, null, null, null},
+				//{null, null, null, null, null},
+				//{null, null, null, null, null},
 			},
 			new String[] {
-				"NAME", "ROOM TYPE", "PRICE", "DATE", "ROOM ID"
+					"ROOM ID", "NAME", "ROOM TYPE", "DATE", "PRICE"  
 			}
 		));
 		
@@ -75,12 +75,6 @@ public class PanelReservationList extends JPanel {
 				panelText.pack();
 				panelText.setLocationRelativeTo(null);
 				
-			}
-			
-			public void AddRowToJTable(Object[] dataRow)
-			{
-				DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
-				 model.addRow(dataRow);
 			}
 			
 			private javax.swing.JButton JButtonOpen;
@@ -100,10 +94,14 @@ public class PanelReservationList extends JPanel {
 		
 
 	}
+	
+	public static void AddRowToJTable(String name, String date)
+	{
+		DefaultTableModel model = (DefaultTableModel) jTable1_1.getModel();
+		 model.addRow(new Object [] { name, date });
+	}
 
-
-	public static void AddRowToJTable(Object[] objects) {
-		// TODO Auto-generated method stub
-		
+	public static void roomIDgenerator() {
+		//
 	}
 }

@@ -30,7 +30,7 @@ public class Framenu extends JFrame {
 	
 	private PanelMakeReservation panelMakeReservation;
 	private PanelHotelInformation panelHotelInformation;
-	private PanelAvailability panelAvailability;
+	//private PanelAvailability panelAvailability;
 	private PanelReservationList panelReservationList;
 	private PanelLogOut panelLogOut;
 	
@@ -70,7 +70,7 @@ public class Framenu extends JFrame {
 		
 		panelMakeReservation = new PanelMakeReservation();
 		panelHotelInformation = new PanelHotelInformation();
-		panelAvailability = new PanelAvailability();
+		//panelAvailability = new PanelAvailability();
 		panelReservationList = new PanelReservationList();
 		panelLogOut = new PanelLogOut();
 		
@@ -94,25 +94,6 @@ public class Framenu extends JFrame {
 		lblinfo.setBounds(25, 11, 182, 14);
 		panelinfo.add(lblinfo);
 		
-		final JPanel panelavail = new JPanel();
-		panelavail.addMouseListener(new PanelButtonMouseAdapter(panelavail) {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				menuClicked(panelAvailability);
-			}
-		});
-		panelavail.setBackground(new Color(51, 0, 0));
-		panelavail.setBounds(0, 257, 238, 35);
-		panel.add(panelavail);
-		panelavail.setLayout(null);
-		
-		JLabel lblAvailability = new JLabel("AVAILABILITY");
-		lblAvailability.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAvailability.setForeground(Color.WHITE);
-		lblAvailability.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblAvailability.setBounds(25, 11, 182, 14);
-		panelavail.add(lblAvailability);
-		
 		final JPanel panelmakeres = new JPanel();
 		panelmakeres.addMouseListener(new PanelButtonMouseAdapter(panelmakeres) {
 				@Override
@@ -121,7 +102,7 @@ public class Framenu extends JFrame {
 				}
 	     });
 		panelmakeres.setBackground(new Color(51, 0, 0));
-		panelmakeres.setBounds(0, 293, 238, 35);
+		panelmakeres.setBounds(0, 257, 238, 35);
 		panel.add(panelmakeres);
 		panelmakeres.setLayout(null);
 		
@@ -145,7 +126,7 @@ public class Framenu extends JFrame {
 			}
 		});
 		panellogout.setBackground(new Color(51, 0, 0));
-		panellogout.setBounds(0, 365, 238, 35);
+		panellogout.setBounds(0, 329, 238, 35);
 		panel.add(panellogout);
 		panellogout.setLayout(null);
 		
@@ -170,7 +151,7 @@ public class Framenu extends JFrame {
 			}
 		});
 		paneldisplay.setBackground(new Color(51, 0, 0));
-		paneldisplay.setBounds(0, 329, 238, 35);
+		paneldisplay.setBounds(0, 293, 238, 35);
 		panel.add(paneldisplay);
 		paneldisplay.setLayout(null);
 		
@@ -189,7 +170,7 @@ public class Framenu extends JFrame {
 		
 		panelMainContent.add(panelMakeReservation);
 		panelMainContent.add(panelHotelInformation);
-		panelMainContent.add(panelAvailability);
+	//	panelMainContent.add(panelAvailability);
 		panelMainContent.add(panelReservationList);
 		panelMainContent.add(panelLogOut);
 		panelMainContent.setLayout(null);
@@ -229,7 +210,7 @@ public class Framenu extends JFrame {
 		
 		panelMakeReservation.setVisible(false);
 		panelHotelInformation.setVisible(false);
-		panelAvailability.setVisible(false);
+	//	panelAvailability.setVisible(false);
 		panelReservationList.setVisible(false);
 		panelLogOut.setVisible(false);
 		

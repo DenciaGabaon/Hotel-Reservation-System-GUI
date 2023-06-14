@@ -1,6 +1,7 @@
 package loginsyst;
 
 import javax.swing.JPanel;
+
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,8 +28,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
-public class PanelMakeReservation extends JPanel {
+public class PanelMakeReservation extends JPanel{
 	
 	private JTextField NameTextField;
 	private JTextField DateTextField;
@@ -103,9 +105,17 @@ public class PanelMakeReservation extends JPanel {
 		        String name = NameTextField.getText();
 		        String date = DateTextField.getText();
 		        
-		      /*  FileWriter writer = new FileWriter("/res/list.txt");
-		        writer.write(name + "\n");
-		        writer.write(date + "\n");*/
+				try {
+					FileWriter writer = new FileWriter("/src/res/list.txt");
+		        	writer.write(name + "\n");
+		        	writer.write(date + "\n");
+		        	writer.close();
+				}	catch(IOException ie){
+					ie.printStackTrace();
+				}
+				
+		        
+		        
 		        
 		        // Call the AddRowToJTable() method with the obtained values
 		        AddRowToJTable(name, date);
